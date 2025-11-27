@@ -1,41 +1,47 @@
-<script lang="ts">
-import Header from '@/widgets/Header.vue';
-export default {
-  data() {
-    return {
-      now: new Date().toLocaleDateString(),
-      news: ["New 1", "New 2", "New 3"],
-    };
-  }
-};
+<script setup lang="ts">
+import HelloWorld from './components/HelloWorld.vue'
+import TheWelcome from './components/TheWelcome.vue'
 </script>
 
-
 <template>
-  <div class=" w-full">
-    <div class="mx-auto my-0 container xl">
-      <Header />
+  <header>
+    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-      <div class="w-full h-40 bg-blue-900 rounded-3xl my-5">
-        <h2>Actual news {{ now }}</h2>
-      </div>
-      <div
-        class="w-full h-40 bg-blue-900 rounded-3xl my-5"
-        v-for="item in news"
-        :key="item"
-      >
-        <h3>{{ item }}</h3>
-      </div>
+    <div class="wrapper">
+      <HelloWorld msg="You did it!" />
     </div>
+  </header>
 
-    <main>
-      <h1>Hello Vue 3</h1>
-    </main>
-    <!-- 4:33 Create c -->
-  </div>
-
-
+  <main>
+    <TheWelcome />
+  </main>
 </template>
 
+<style scoped>
+header {
+  line-height: 1.5;
+}
 
-<style scoped></style>
+.logo {
+  display: block;
+  margin: 0 auto 2rem;
+}
+
+@media (min-width: 1024px) {
+  header {
+    display: flex;
+    place-items: center;
+    padding-right: calc(var(--section-gap) / 2);
+  }
+
+  .logo {
+    margin: 0 2rem 0 0;
+  }
+
+  header .wrapper {
+    display: flex;
+    place-items: flex-start;
+    flex-wrap: wrap;
+  }
+}
+</style>
